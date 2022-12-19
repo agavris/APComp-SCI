@@ -1,0 +1,91 @@
+package Week13;
+
+import java.util.ArrayList;
+
+public class Stock {
+    private String ticker;
+    private double currentPrice;
+    private final double pastYearIncrease;
+    private final ArrayList<Double> past10Days;
+    private final int volume;
+
+    public Stock(String ticker, double currentPrice, double pastYearIncrease, ArrayList<Double> past10Days, int volume) {
+        this.ticker = ticker;
+        this.currentPrice = currentPrice;
+        this.pastYearIncrease = pastYearIncrease;
+        this.past10Days = past10Days;
+        this.volume = volume;
+    }
+
+    public String getTicker() {
+        return this.ticker;
+    }
+
+    public double getCurrentPrice() {
+        return this.currentPrice;
+    }
+
+    public double getPastYearIncrease() {
+        return this.pastYearIncrease;
+    }
+
+    public ArrayList<Double> getPastMonthlyPrices() {
+        return this.past10Days;
+    }
+
+    public int getVolume() {
+        return this.volume;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    public double bestBuy() {
+        double bestBuy = this.past10Days.get(0);
+        for (Double past10Day : this.past10Days) {
+            if (past10Day < bestBuy) {
+                bestBuy = past10Day;
+            }
+        }
+        return bestBuy;
+    }
+
+    public double bestSell() {
+        double bestSell = this.past10Days.get(0);
+        for (Double past10Day : this.past10Days) {
+            if (past10Day > bestSell) {
+                bestSell = past10Day;
+            }
+        }
+        return bestSell;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Double> past10Days = new ArrayList<>();
+        past10Days.add(100.0);
+        past10Days.add(101.0);
+        past10Days.add(102.0);
+        past10Days.add(103.0);
+        past10Days.add(104.0);
+        past10Days.add(105.0);
+        past10Days.add(106.0);
+        past10Days.add(107.0);
+        past10Days.add(108.0);
+        past10Days.add(109.0);
+
+        Stock stock = new Stock("AAPL", 100.0, 10.0, past10Days, 1000);
+        System.out.println("The Ticker: " + stock.getTicker());
+        System.out.println("The Current Price: " + stock.getCurrentPrice());
+        System.out.println("The Past Year Increase: " + stock.getPastYearIncrease());
+        System.out.println("The Past 10 Days: " + stock.getPastMonthlyPrices());
+        System.out.println("The Volume: " + stock.getVolume());
+        System.out.println("The Best Time to Buy in the last 10 days: " + stock.bestBuy());
+        System.out.println("The Best Time to Sell in the last 10 days: " + stock.bestSell());
+
+    }
+}
