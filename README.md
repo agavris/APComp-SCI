@@ -1,2 +1,2 @@
 # APComp-SCI
-AP-CompSCI Code
+AP-CompSCI code 
