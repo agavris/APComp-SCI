@@ -64,7 +64,6 @@ public class SchedulePrinter {
             res.put(day.getKey(), new ArrayList<>(Arrays.asList(tempStr)));
         }
 
-
         return res;
     }
 

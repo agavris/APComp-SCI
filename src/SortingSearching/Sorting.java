@@ -29,6 +29,12 @@ public class Sorting {
         for(int i : nums) {
             System.out.print(i + " ");
         }
+        Stack<Integer> s = new Stack<>();
+        s.push(1);
+        int w = s.peek();
+        System.out.println(w);
+        s.push(2);
+        System.out.println(s);
 
 
     }
